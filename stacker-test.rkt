@@ -1,6 +1,7 @@
 #lang stacker/smol/hof
 
-(defvar xyz 3)
-(defvar o (set! xyz 173))
-o
-xyz
+(defvar x 5)
+(deffun (set1 x y)
+  (set! x y))
+(set1 x 6)
+x

@@ -1,4 +1,5 @@
 #lang plait
+(print-only-errors #true)
 
 (define-type Exp
   [num (n : Number)]
