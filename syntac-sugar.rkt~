@@ -1,0 +1,9 @@
+#lang plait
+
+(define-syntax strict-if
+  (syntax-rules ()
+    [(strict-if C T E)
+     (if (boolean? C)
+         (if C T E)
+         (error 'strict-if "expected a boolean"))]))
+
