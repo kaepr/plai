@@ -1,0 +1,23 @@
+#lang plait 
+
+(define-type BinOp
+             [plus])
+
+(define-type Expr
+             [binE (operator : BinOp)
+                   (left : Exp)
+                   (right : Exp)]
+             [numE (value : Number)])
+
+(calc : (Exp -> Number))
+
+(define (calc e)
+ (type-case Exp e
+  [(binE o l r)
+   (type-case BinOp o
+    [(plus) (+ (calc l) (+ calc r))])]
+  [(numE v) v]))
+
+(test (calc (binE (plus) (numE 5) (numE 6))) 11)
+
+ 
